@@ -70,6 +70,16 @@ scheduler = torch.optim.lr_scheduler.StepLR(optimizer, 1.0, gamma=0.95)
 PAD_IDX = TRG.vocab.stoi['<pad>']
 criterion = nn.CrossEntropyLoss(ignore_index=PAD_IDX)
 
+'''
+encoder = Encoder(input_size, encoder_emb_size, encoder_hidden_size, decoder_hidden_size, dropout = encoder_dropout, model_type = model_type)
+decoder = Decoder(decoder_emb_size, encoder_hidden_size, encoder_hidden_size, output_size, dropout = decoder_dropout, model_type = model_type)
+seq2seq_model = Seq2Seq(encoder, decoder, device)
+
+optimizer = optim.Adam(seq2seq_model.parameters(), lr = learning_rate)
+scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer)
+criterion = nn.CrossEntropyLoss(ignore_index=PAD_IDX)
+'''
+
 
 def train(model, dataloader, optimizer, criterion, scheduler=None):
     model.train()
